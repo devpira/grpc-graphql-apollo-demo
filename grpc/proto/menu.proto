@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package yummer.main.grpc.menu;
+
+service Menu {
+    rpc GetMenus(GetMenusRequest) returns (GetMenusResponse);
+}
+
+message GetMenusRequest{
+    repeated string menuIds = 1;
+}
+
+message MenuItemResponse {
+    string _id = 1;
+    string name = 2;
+    string description = 3;
+    string imageUrl = 4;
+    string ingredients = 5;
+    float price = 6;
+}
+message MenuResponse {
+    string _id = 1;
+    string adminUid = 2;
+    string name = 3;
+    repeated MenuItemResponse menuItems = 4;
+}
+
+message GetMenusResponse {
+    repeated MenuResponse menus = 1;
+}

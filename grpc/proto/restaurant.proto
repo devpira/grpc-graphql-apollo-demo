@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package yummer.main.grpc.restaurant;
+
+service Restaurant {
+    rpc GetRestaurant(GetRestaurantRequest) returns (GetRestaurantResponse);
+    rpc GetRestaurantsByNameSearch(GetRestaurantsByNameSearchRequest) returns (GetRestaurantsByNameSearchResponse);
+}
+
+message GetRestaurantRequest{
+    string _id = 1;
+}
+
+message GetRestaurantResponse {
+    string _id = 1;
+    string adminUid = 2;
+    string name = 3;
+    string description = 4;
+    string imageUrl = 5;
+    string address = 6;
+    string phoneNumber = 7;
+    string emailAddress = 8;
+    string website = 9;
+    repeated string menuIds = 10;
+}
+
+message GetRestaurantsByNameSearchRequest{
+    string name = 1;
+}
+
+message GetRestaurantsByNameSearchResponse{
+    repeated GetRestaurantResponse restaurants = 1;
+}
